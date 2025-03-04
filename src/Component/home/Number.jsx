@@ -18,8 +18,8 @@ const AlgoEdgeNumbers = () => {
           <div className="numbers">
             <h2>01</h2>
             <h2>|</h2>
-          </div>
-          <p>Verified Performance of 50%+ Annual Returns.</p>
+          </div >
+          <p className="para" style={{color:"white"}}>Verified Performance of 50%+ Annual Returns.</p>
         </div>
         <hr />
         <div className="numbers-item">
@@ -27,7 +27,7 @@ const AlgoEdgeNumbers = () => {
             <h2>02</h2>
             <h2>|</h2>
           </div>
-          <p>
+          <p className="para" style={{color:"white"}}>
           Data from Over 20,000 active Traders and
           Algorithms.
           </p>
@@ -38,7 +38,7 @@ const AlgoEdgeNumbers = () => {
             <h2>03</h2>
             <h2>|</h2>
           </div>
-          <p>
+          <p className="para" style={{color:"white"}}>
           Data from Over 20,000 active Traders and
           Algorithms.
           </p>

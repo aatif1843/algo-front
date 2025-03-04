@@ -34,9 +34,13 @@ const Footer = () => {
             <div className="footer-section">
               <h3 className="section-title">Solutions</h3>
               <ul className="footer-list">
-                <li>Invest Through Our Global Partners</li>
-                <li>License our Strategies</li>
-                <li>Quant as a Service</li>
+
+              <Link to="/finles-service" className="menu-link">
+              <li> Expertly Managed Funds</li>
+                </Link>
+                <Link to="/finles-service" className="menu-link">
+                <li>Quant Trading SaaS</li>
+                </Link>
               </ul>
             </div>
 

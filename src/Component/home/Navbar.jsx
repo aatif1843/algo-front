@@ -6,7 +6,6 @@ import "./Navbar.css";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // Track whether we're on a mobile viewport (below 1030px)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1030);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ const Navbar = () => {
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  // Close menu and dropdown only if we're on mobile
   const closeMenu = () => {
     if (isMobile) {
       setIsMenuOpen(false);
@@ -28,10 +26,16 @@ const Navbar = () => {
     }
   };
 
+  const dropdownStyle = {
+    maxHeight: isDropdownOpen ? '300px' : '0px',
+    opacity: isDropdownOpen ? 1 : 0,
+    overflow: 'hidden',
+    transition: 'max-height 0.7s ease-in-out, opacity 0.7s ease-in-out'
+  };
+
   return (
     <header className="navbar-header">
       <nav className="navbar-container">
-        {/* Logo Section */}
         <div className="navbar-logo">
           <Link to="/" className="logo-link" onClick={closeMenu}>
             <div className="logo-circle">
@@ -41,7 +45,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Hamburger Menu (Mobile) */}
         <div className="hamburger-menu">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -68,7 +71,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Menu Section */}
         <div className={`menu ${isMenuOpen ? "menu-open" : ""}`}>
           <ul className="menu-list">
             <li className="menu-item">
@@ -79,40 +81,45 @@ const Navbar = () => {
             <li className="menu-item dropdown">
               <span
                 className="menu-link dropdown-toggle"
-                onClick={toggleDropdown}
+                onClick={() => {
+                  closeMenu();
+                  toggleDropdown();
+                }}
               >
                 Solutions
               </span>
-              {isDropdownOpen && (
-                <div className="dropdown-card">
-                  <Link
-                    to="/finles-service"
-                    className="menu-link-1"
-                    onClick={closeMenu}
-                  >
-                    <div className="dropdown-item">
-                      <h1>Expertly Managed Funds</h1>
-                      <p className="item-description">
-                        Hands-off investment approach <br /> through AlgoEdge’s
-                        trusted global <br /> partner funds.
-                      </p>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/Qaas-service"
-                    className="menu-link-1"
-                    onClick={closeMenu}
-                  >
-                    <div className="dropdown-item">
-                      <h1>Quant Trading SaaS</h1>
-                      <p className="item-description">
-                        Empower your trading operations <br /> with AlgoEdge’s
-                        Quant SaaS without the need <br /> in-house team.
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              )}
+              <div
+                className="dropdown-card"
+                style={dropdownStyle}
+                onClick={closeMenu}
+              >
+                <Link
+                  to="/finles-service"
+                  className="menu-link-1"
+                  onClick={closeMenu}
+                >
+                  <div className="dropdown-item">
+                    <h1>Expertly Managed Funds</h1>
+                    <p className="item-description">
+                      Hands-off investment approach <br /> through AlgoEdge’s
+                      trusted global <br /> partner funds.
+                    </p>
+                  </div>
+                </Link>
+                <Link
+                  to="/Qaas-service"
+                  className="menu-link-1"
+                  onClick={closeMenu}
+                >
+                  <div className="dropdown-item">
+                    <h1>Quant Trading SaaS</h1>
+                    <p className="item-description">
+                      Empower your trading operations <br /> with AlgoEdge’s
+                      Quant SaaS without the need <br /> in-house team.
+                    </p>
+                  </div>
+                </Link>
+              </div>
             </li>
             <li className="menu-item">
               <Link

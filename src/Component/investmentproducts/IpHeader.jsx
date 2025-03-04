@@ -1,6 +1,6 @@
 import React from "react";
 import "./IpHeader.css";
-
+import { Link } from "react-router-dom";
 const IpHeader = () => {
   const scheduleMeeting = () => {
     alert("Thank you for your interest! We will contact you soon to schedule a meeting.");
@@ -17,7 +17,9 @@ const IpHeader = () => {
           Each strategy is carefully tested to maximize returns while managing risk through advanced 
           quantitative models.
           </p>
-          <button onClick={scheduleMeeting}>Schedule a meeting</button>
+          <Link to="/contact" className="menu-link" >
+                     
+          <button>Schedule a meeting</button></Link>
         </div>
       </div>
     </div>
